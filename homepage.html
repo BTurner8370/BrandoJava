@@ -6,6 +6,16 @@
     <title>My Portfolio</title>
 
     <style>
+        body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+#universityResources, #personalProjects {
+  border: 2px solid #333;
+  padding: 10px;
+  margin: 10px 0;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -63,7 +73,10 @@
 </head>
 
 <body>
-
+<label>
+  <input type="checkbox" id="darkModeToggle">
+  Dark Mode
+</label>
 <header>
     <h1 id="welcomeMessage">Welcome!</h1>
 </header>
@@ -75,10 +88,23 @@
 </nav>
 
 <section id="about">
+    <section id="about">
+  <h2>About Me</h2>
+  <p>I am a software development student passionate about web development and creative technology.</p>
+
+  <h3>My Skills</h3>
+  <ul id="skillsList"></ul>
+        <ul>JavaScript</ul>
+        <ul>AWS Navigation/Modification</ul>
+        <ul>Basic Database Creation and Mockup Design</ul>
+        <ul>Entry Level Security Protocal and Procedures for Mid to High Level clients</ul>
+        <ul>HTML Fluent</ul>
+        
+</section>
     <h2>About Me</h2>
     <p>
         Hi, I'm Brandon, a software development student and creative with a passion for technology,
-        music, and building meaningful digital experiences. I enjoy working on projects that blend
+        music, and building meaningful experiences. I enjoy working on projects that blend
         logic and creativity, from coding applications to developing tools for DJs and content creators.
     </p>
     <p>
@@ -105,6 +131,14 @@
 </section>
 
 <section id="contact">
+    <section id="contact">
+  <h2>Contact Me</h2>
+
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
+</section>
     <h2>Contact Me</h2>
 
     <form>
@@ -127,3 +161,61 @@
 
 </body>
 </html>
+
+<script>
+    // ==========================
+// SKILLS ARRAY + LOOP
+// ==========================
+const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub"];
+
+const skillsList = document.getElementById("skillsList");
+
+skills.forEach(skill => {
+  let li = document.createElement("li");
+  li.textContent = skill;
+  skillsList.appendChild(li);
+});
+
+
+// ==========================
+// CONDITIONAL LOGIC
+// ==========================
+
+// Change this number based on how many projects you actually have
+let projectCount = 2;
+
+const universityDiv = document.getElementById("universityResources");
+const projectsDiv = document.getElementById("personalProjects");
+
+if (projectCount < 3) {
+  universityDiv.style.display = "block";
+  projectsDiv.style.display = "block";
+} else {
+  universityDiv.style.display = "none";
+  projectsDiv.style.display = "block";
+}
+
+
+// ==========================
+// DARK MODE TOGGLE
+// ==========================
+const toggle = document.getElementById("darkModeToggle");
+
+toggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+
+// ==========================
+// FORM INTERACTIVITY
+// ==========================
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  let name = document.getElementById("name").value;
+
+  alert(`Thank you, ${name}, your message has been sent!`);
+});
+</script>
