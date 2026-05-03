@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+Assignment: DOM Manipulation & Dynamic Content
+Name: Brandon Turner
+Date: May 3, 2026
+
+Purpose:
+Demonstrates dynamic DOM manipulation, element selection,
+and timed form submission feedback using JavaScript.
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Practice</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 40px;
+        }
+
+        #notification {
+            background-color: lightyellow;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #projects {
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Notification Area -->
+    <div id="notification"></div>
+
+    <!-- Header -->
+    <h1 id="mainHeader">My Portfolio</h1>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p id="aboutText">I am a software development student.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+    </section>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+        <h2>Contact Me</h2>
+        <input type="text" placeholder="Your Name" required><br><br>
+        <button type="submit">Send Message</button>
+        <p id="formMessage"></p>
+    </form>
+
+    <script>
+        // -------------------------------
+        // 1. Dynamically Add New Content
+        // -------------------------------
+        let newParagraph = document.createElement("p");
+        newParagraph.textContent = "Recently, I built a DJ music organization app that analyzes BPM and energy levels.";
+        document.getElementById("projects").appendChild(newParagraph);
+
+
+        // -----------------------------------------
+        // 2. Modify Existing Elements with Selectors
+        // -----------------------------------------
+
+        // Using querySelector
+        let header = document.querySelector("#mainHeader");
+        header.style.color = "blue";
+
+        // Using getElementById
+        let aboutText = document.getElementById("aboutText");
+        aboutText.style.fontSize = "18px";
+        aboutText.style.border = "2px solid black";
+        aboutText.style.padding = "10px";
+
+
+        // -----------------------------------------
+        // 3. Delayed Notification Message
+        // -----------------------------------------
+        setTimeout(() => {
+            document.getElementById("notification").innerHTML =
+                "Welcome! Check out my latest projects below.";
+        }, 2000);
+
+
+        // -----------------------------------------
+        // 4. Timed Form Submission Confirmation
+        // -----------------------------------------
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+            event.preventDefault(); // Stop page refresh
+
+            let message = document.getElementById("formMessage");
+
+            // Show loading message
+            message.textContent = "Sending message...";
+
+            // Delay confirmation
+            setTimeout(() => {
+                message.textContent = "Message sent successfully!";
+            }, 2500);
+        });
+
+    </script>
+
+</body>
+</html>
