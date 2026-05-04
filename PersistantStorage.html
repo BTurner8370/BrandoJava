@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive UI Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- DARK MODE TOGGLE -->
+<header class="top-bar">
+    <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span>Dark Mode</span>
+    </label>
+</header>
+
+<!-- CONTACT FORM -->
+<section class="container">
+    <h1>Contact Form</h1>
+
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Email">
+
+        <div class="tooltip">
+            <button type="submit">Submit</button>
+            <span class="tooltip-text">Click to send your message!</span>
+        </div>
+    </form>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2>Notice</h2>
+        <p>This page is a work in progress.</p>
+        <button id="closeModal">Close</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
